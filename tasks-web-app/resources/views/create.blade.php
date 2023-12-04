@@ -24,10 +24,12 @@
             }
 
             input {
-                width: 292px;
+                padding: 4px 8px 4px 8px;
+                width: 280px;
             }
 
             button {
+                padding: 4px 8px 4px 8px;
                 width: 300px;
             }
 
@@ -35,11 +37,13 @@
     </head>
     <body>
         <h1>CREATE TASK</h1>
-        <form method="PUT" action="{{ url('create-task') }}">
-            <input id="title" placeholder="TITLE" type="text">
-            <input id="user" placeholder="USER" type="text">
-            <input id="project" placeholder="PROJECT" type="text">
-            <button type="submit">SUBMIT</button>
+        <form method="POST" action="{{ url('create-task') }}">
+            @csrf
+                <input id="title" name="title" placeholder="TITLE" type="text">
+                <input id="user" name="user" placeholder="USER" type="text">
+                <input id="project" name="project" placeholder="PROJECT" type="text">
+                <button type="submit">SUBMIT</button>
+                <button type="button" onclick="window.location='{{ url('/tasks') }}'">TASKS</button>
         </form>
     </body>
 </html>

@@ -21,6 +21,6 @@ Route::get('/', function () {
     return view('create');
 });
 
-Route::put('/create-task', [TaskController::class, 'store']);
+Route::post('/create-task', [TaskController::class, 'store']);
 
 Route::get('/tasks', [TaskController::class, 'show']);

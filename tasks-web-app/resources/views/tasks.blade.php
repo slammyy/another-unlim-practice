@@ -22,6 +22,12 @@
             background: whitesmoke;
         }
 
+        button {
+           margin-bottom: 10px;
+           padding: 4px 8px 4px 8px;
+           width: 100%;
+        }
+
         table {
             border: 2px solid gray;
             border-collapse: collapse;
@@ -49,21 +55,24 @@
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>TITLE</th>
-            <th>USER</th>
-            <th>PROJECT</th>
-        </tr>
-        @foreach ($collection as $item)
+    <main>
+        <button type="button" onclick="window.location='{{ url('/') }}'">CREATE TASKS</button>
+        <table>
             <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->title }}</td>
-                <td>{{ $item->user }}</td>
-                <td>{{ $item->project }}</td>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>USER</th>
+                <th>PROJECT</th>
             </tr>
-        @endforeach
-    </table>
+            @foreach ($collection as $item)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->user }}</td>
+                    <td>{{ $item->project }}</td>
+                </tr>
+            @endforeach
+        </table>
+    </main>
 </body>
 </html>
