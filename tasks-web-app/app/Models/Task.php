@@ -22,5 +22,7 @@ class Task extends Model
         'task_title',
         'user',
         'project',
+        'updated_at',
+        'created_at',
     ];
 }
