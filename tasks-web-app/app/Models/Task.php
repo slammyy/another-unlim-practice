@@ -7,21 +7,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Task extends Model
 {
-    public function name(): HasOne
-    {
-        return $this->hasOne(User::class);
-    }
-
-    public function title(): HasOne
-    {
-        return $this->hasOne(Project::class);
-    }
-
     protected $fillable = [
         'name',
         'task_title',
-        'user',
-        'project',
+        'user_id',
+        'project_id',
         'updated_at',
         'created_at',
     ];

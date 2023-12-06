@@ -56,7 +56,7 @@
 </head>
 <body>
     <main>
-        <button type="button" onclick="window.location='{{ url('/') }}'">CREATE TASKS</button>
+        <button type="button" onclick="window.location='{{ url('/') }}'">CREATE TASK</button>
         <table>
             <tr>
                 <th>ID</th>
@@ -68,8 +68,8 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->title }}</td>
-                    <td>{{ $item->user }}</td>
-                    <td>{{ $item->project }}</td>
+                    <td>{{ App\Models\User::find($item->user_id)->name }}</td>
+                    <td>{{ App\Models\Project::find($item->project_id)->title }}</td>
                 </tr>
             @endforeach
         </table>

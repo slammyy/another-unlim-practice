@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/test', function () {
-    $collection = DB::table('tasks')->get();
+    $collection = Task::get();
+
     return $collection;
 });

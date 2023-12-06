@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\Console\Input\Input;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +14,6 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
-    return view('create');
-});
-
-Route::post('/create-task', [TaskController::class, 'store']);
-
-Route::get('/tasks', [TaskController::class, 'show']);
+Route::get('/', [TaskController::class, 'createTask']);
+Route::get('/show-task', [TaskController::class, 'showTask']);
+Route::post('/store-task', [TaskController::class, 'store']);

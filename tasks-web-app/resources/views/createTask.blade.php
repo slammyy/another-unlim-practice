@@ -37,13 +37,21 @@
     </head>
     <body>
         <h1>CREATE TASK</h1>
-        <form method="POST" action="{{ url('create-task') }}">
+        <form method="POST" action="{{ url('store-task') }}">
             @csrf
                 <input id="title" name="title" placeholder="TITLE" type="text">
-                <input id="user" name="user" placeholder="USER" type="text">
-                <input id="project" name="project" placeholder="PROJECT" type="text">
+                <select id="user" name="user">
+                    @foreach ($users as $user)
+                        <option value="{{ $user->name }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>
+                <select id="project" name="project">
+                    @foreach ($projects as $project)
+                        <option value="{{ $project->title }}">{{ $project->title }}</option>
+                    @endforeach
+                </select>
                 <button type="submit">SUBMIT</button>
-                <button type="button" onclick="window.location='{{ url('/tasks') }}'">TASKS</button>
+                <button type="button" onclick="window.location='{{ url('/show-task') }}'">TASKS</button>
         </form>
     </body>
 </html>

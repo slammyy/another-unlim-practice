@@ -2,28 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Task;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
-    public function show(): View
+    public function createTask()
     {
-        $collection = DB::table('tasks')->get();
-        return view('tasks', ['collection' => $collection]);
+        $users = User::all();
+        $projects = Project::all();
+
+        return view('createTask', compact('users', 'projects'));
     }
 
-    public function store(Request $request): RedirectResponse
+    public function showTask()
     {
+        $collection = Task::all();
+
+        return view('showTask', compact('collection'));
+    }
+
+    public function store(Request $request)
+    {
+        $user = $request->user;
+        $user_id = User::where('name', $user)->first()->id;
+        $project = $request->project;
+        $project_id = Project::where('title', $project)->first()->id;
+
         $task = new Task;
         $task->title = $request->title;
-        $task->user = $request->user;
-        $task->project = $request->project;
+        $task->user_id = $user_id;
+        $task->project_id = $project_id;
         $task->save();
 
-        return redirect('tasks')->with('status', 'Data Has Been inserted');
+        return redirect('show-task');
     }
 }
