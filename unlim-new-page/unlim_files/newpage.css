@@ -58,6 +58,7 @@
     height: 65px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-inline: 20px;
     color: #6e6e6e;
     background: #f8f8f8;
